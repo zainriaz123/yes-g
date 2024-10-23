@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { ButtonHTMLAttributes } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -27,7 +28,8 @@ export function Button({
   borderClassName?: string;
   duration?: number;
   className?: string;
-} ) {
+  [key: string]: any;
+ } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <Component
       className={cn(
@@ -48,7 +50,7 @@ export function Button({
             className={cn(
               "h-20 w-20 opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
               borderClassName
-            ) }
+            )}
           />
         </MovingBorder>
       </div>
@@ -79,7 +81,8 @@ export const MovingBorder = ({
   duration?: number;
   rx?: string;
   ry?: string;
-}    & React.SVGProps<SVGSVGElement>) => {
+  [key: string]: any;
+}) => {
   const pathRef = useRef<any>();
   const progress = useMotionValue<number>(0);
 
@@ -89,7 +92,7 @@ export const MovingBorder = ({
       const pxPerMillisecond = length / duration;
       progress.set((time * pxPerMillisecond) % length);
     }
-  } );
+  });
 
   const x = useTransform(
     progress,
@@ -105,7 +108,7 @@ export const MovingBorder = ({
   return (
     <>
       <svg
-        xmlns=""
+        xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
         className="absolute h-full w-full"
         width="100%"
@@ -135,3 +138,5 @@ export const MovingBorder = ({
     </>
   );
 };
+
+
