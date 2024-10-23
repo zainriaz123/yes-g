@@ -12,6 +12,7 @@ const page = () => {
 <FeaturedCourses/>
 <FeaturedWebinars/>
 <WhyChooseUs/>
+
     </main>
   )
 }
