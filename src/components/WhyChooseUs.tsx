@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import StickyScroll from './ui/sticky-scroll-reveal';
+import Stickyscroll from "@/components/ui/sticky-scroll-reveal"
 
 const content = [
     {
