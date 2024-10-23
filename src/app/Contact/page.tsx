@@ -3,7 +3,7 @@
 import React from 'react';
 import { Meteors } from '@/components/ui/meteors';
 import Image from 'next/image';
-import avaImage from '@/components/images/avatar2.png';
+import avaImage  from "@/app/images/zain-pic.jpg"
 
 const ContactPage = () => {
   return (
