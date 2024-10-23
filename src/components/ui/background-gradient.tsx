@@ -13,7 +13,7 @@ export const BackgroundGradient = ({
   className?: string;
   containerClassName?: string;
   animate?: boolean;
-}) => {
+}& React.SVGProps<SVGSVGElement>) => {
   const variants = {
     initial: {
       backgroundPosition: "0 50%",
