@@ -1,9 +1,9 @@
 
 import type { Config } from "tailwindcss";
-
+import Meteors from "@/components/ui/meteors";
 import { PluginAPI } from "tailwindcss/types/config";
-  import plugin from "tailwindcss";
-function addvaribleforcolors({addBase, theme }: PluginAPI){
+  
+function typeofaddvaribleforcolors({addBase, theme }: PluginAPI){
   const allColors =theme('colors',{}) ||{} ;
   const newVars:Record<string,string>={};
 Object.entries(allColors).forEach(([key,value])=>{
@@ -21,7 +21,7 @@ if(typeof subValue === 'string'){
 addBase({
   'root':newVars,
 })
-}
+};
 
 const config: Config = {
   content: [
@@ -36,7 +36,23 @@ const config: Config = {
         foreground: "var(--foreground)",
         
       },
-      
+      extend: {
+        animation: {
+          "meteor-effect": "meteor 5s linear infinite",
+        },
+        keyframes: {
+          meteor: {
+            "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+            "70%": { opacity: "1" },
+            "100%": {
+              transform: "rotate(215deg) translateX(-500px)",
+              opacity: "0",
+            },
+          },
+        },
+      },
+    },
+  
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
       },
@@ -58,14 +74,8 @@ const config: Config = {
         },
       },
 
-    },
   },
-  plugins: [addvaribleforcolors ],
+  plugins: [typeofaddvaribleforcolors ],
 };
-const links = [
-  { url: 'https://stripe.com', name: 'Stripe', id: 1 },
-  { url: 'https://stripe.com', name: 'Stripe Duplicate', id: 2 },
-];
-
-
 export default config;
+
